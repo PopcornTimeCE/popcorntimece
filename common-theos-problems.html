@@ -1,0 +1,53 @@
+<div id="title">Common THEOS problems</div>
+<div id="content">
+<h2>The most common THEOS build system problems</h2>
+THEOS is a very nice and easy-to-use build system for the common iPhone jailbroken programmer. It has a nice template system, easy build process, a stable code base. In short words, everything a developer could whish himself. But there is one problem: Error messages. Nobody likes error messages, they tell you what you made wrong but they don't tell you how to do it right. This is a quite destructive procedure and one's motivation will fly away like a sheet of paper in a stormy night. This page has one goal: To give every error message a face and a complete way to fix. To make it easier for you to find your error, I came up with a text structure:<br><br><br>
+<h4>Short error description</h4>
+Long error description. Where does it appear, when, under which conditions.
+<pre><code>
+Example of a real error dump.
+Example: Making all for tweak watchscreen...
+</pre></code>
+The fix. How to fix this error, along with an explanation.<br><br><br><br>
+Okay enough of this, let's dive into it!
+<hr>
+<h4>Linker not finding CydiaSubstrate</h4>
+The linker cannot find the symbols for the various CydiaSubstrate functions, on which mostly all tweaks rely.
+This error occurs when you try to directly use substrate functions with Ryan Petrichs theos fork. The Cydia Substrate binary is valid and in the correct "$THEOS/lib" directory.
+<pre><code>
+root@bash# make
+Making all for tweak librarian...
+Preprocessing Tweak.xm...
+Compiling Tweak.xm (armv7)...
+Linking tweak librarian (armv7)...
+Undefined symbols for architecture armv7:
+  "_MSHookFunction", referenced from:
+      _logosLocalCtor_ee39cf58() in Tweak.xm.5af61362.o
+ld: symbol(s) not found for architecture armv7
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make[3]: *** [.theos/obj/armv7/librarian.dylib] Error 1
+make[2]: *** [.theos/obj/armv7/librarian.dylib] Error 2
+make[1]: *** [internal-library-all_] Error 2
+make: *** [librarian.all.tweak.variables] Error 2
+</code></pre>
+As he explained on IRC to me, rpetrich disliked that substrate is being linked by default to every tweak project, so he changed the beaviour. You can fix this easily by adding "[tweak]_LIBRARIES = substrate" to your Makefile.
+<hr>
+<h4>Make package requires dpkg-deb</h4>
+The dpkg command line tool is missing. This appears on an OS X installation. Xcode is installed and theos, ldid etc. are set up.
+<pre><code>
+root@bash$ make package install
+/Applications/Xcode.app/Contents/Developer/usr/bin/make package requires dpkg-deb.
+make: *** [internal-package-check] Error 1
+</code></pre>
+You forgot to install dpkg. Get <a href="http://brew.sh/" target="_blank">Homebrew from here</a> and then run "brew install dpkg" from a Terminal of your choice.
+<hr>
+<br>
+If you have another THEOS error, for which you have a fix and a log, email me, so I can update this page!
+</div>
+
+<!-- include this everywhere you want the standard design template from here... -->
+<script type="text/javascript" src="template.js"></script>
+<noscript>
+As this website uses JavaScript to generate a semi-dynamically created page, you need to activate JavaScript!
+</noscript>
+<!-- ...until here! -->

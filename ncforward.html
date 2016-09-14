@@ -1,0 +1,75 @@
+<div id="title">NCForward tweak project</div>
+<div id="content">
+<h2>NCForward documentation and more</h2>
+<h3>A feature Apple, should have implemented way earlier</h3>
+<h4>For the impatient</h4>
+<a href="http://h6nry.github.io/repo/" target="blank_"><b>Download the Cydia tweak here.</b></a><br>
+<a href="Files/NCForward1.exe" target="blank_"><b>Download the Windows app here.</b></a><br>
+<a href="Files/NCForward1.app.zip" target="blank_"><b>Download the Mac OS X app here.</b></a>
+<h4>The long story</h4>
+<h5>More updates for version 2</h5>
+While NCForward V. 2.2 is in the works, i actually managed to implement a server for Mac OS X which allows Mac users to receive their iOS notifications natively. I know there exists continuity for Mac and iOS but continuity is only for iOS 8 and above. I have an iPhone 4 with iOS 6 so this makes sense, also when thinking about my vision to let one forward notifications from every single device to every single device. Anyways, download <a href="Files/NCForward1.app.zip" target="blank_">NCForward server for Mac</a> here, and drop it in your Applications folder. If you want NCForward to start up on login, drop the app to "System preferences"->"Users & Groups"->"Current user"->"Login items". There should be now an item named "NCForward1". If you don't want to relogin, just execute the app now. If NCForward asks you for network access, click allow (otherwise NCForward cannot work!).
+<h5>Updates for version 2</h5>
+Alongside with the release of version 2 there will be a basic implementation for <a href="https://pushbullet.com/">Pushbullet</a>, a service to distribute all kinds of data and text between all kinds of devices. You may have noticed, this is nearly exactly the same goal NCForward has. So due to high demand and because it just makes sense i implemented Pushbullet into NCForward. And no, this will not kill NCForward's original function to forward notifications in your LAN and no, Pushbullet is 100% optional and 100% free (yet). And yes, there exists iOS (Pushbullet) to Mac support but there is nothing like that for any other OS constellation, so it makes sense. But back to...
+<h5>The original story</h5>
+NCforward is a small project i started to implement a feature in iOS Apple should have implemented way earlier.
+The feature is to forward every single notification you get on your loved iDevice to any other computer.
+No matter what OS, no matter how these are displayed, just forward them, anywhere. Currently i only wrote a Windows client but making one for Mac/Linux/...
+is not hard at all if you know a bit about scripting and networking! Look down at this page for more info!
+You can download the Tweak, which you WILL have to install, right here on my repo: <a href="http://h6nry.github.io/repo/" target="blank_">H6nry' Cydia repo</a>.
+You can install the Windows counterpart by clicking on <a href="Files/NCForward1.exe" target="blank_">THIS LINK</a>, downloading the file and
+putting it into your Autostart folder (Which is somwhere here: C:\Users\[Username]\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup).
+If you don't want to reboot, just execute it now by double-clicking and say yes if Windows asks you to allow network access.<br><br>
+As always, you do this ON YOUR OWN RISK!
+<h4>Protocol documentation</h4>
+<h5>Version 2</h5>
+Even at version 2 NCForward protocol is very simple, we stay with the UDP/Datagram protocol from V.1, the port is still the same as well as no confirmation packets which are sent back. The whole message is still one complete and valid UTF8-encoded string, which prevents you (and me) from too much bit-byte-binary madness. The rest changed significantly:
+<table border="1">
+<tr><td><b>Length in chars</b></td><td><b>Example</b></td><td><b>Description</b></td></tr>
+<tr><td>9</td><td>NCFV2_PV2</td><td>The protocol identifier, NCF: magic, V2: version 2, _P: magic, V2: protocol version 2. You should really check these as the protocol may change significantly!</td></tr>
+<tr><td>1</td><td>1</td><td>1 or 0 to indicate whether this packet already has been sent with another protcol revision</td></tr>
+<tr><td>1</td><td>B</td><td>Indicates that the body begins.</td></tr>
+<tr><td>5</td><td>00005</td><td>Indicate the length of the first field: Title</td></tr>
+<tr><td>X</td><td>Hello</td><td>The title of the notification.</td></tr>
+<tr><td>5</td><td>00015</td><td>Indicate the length of field: Message</td></tr>
+<tr><td>X</td><td>This is a test.</td><td>The message of the notification.</td></tr>
+<tr><td>5</td><td>00017</td><td>Indicate the length of the Bundle-ID</td></tr>
+<tr><td>X</td><td>org.h6nry.testapp</td><td>The bundle identifier of the app.</td></tr>
+<tr><td>5</td><td>00003</td><td>Indicate the length of field: Bulletin-ID</td></tr>
+<tr><td>X</td><td>3a1</td><td>A unique ID with which every notification is being marked.</td></tr>
+</table>
+For legacy reasons (and because i have no windows system at the moment :P) NCForward tweak currently sends two packets with each notification: One packet with protocol version 1 (and a deprecated message at the end) and another one which implements V2. Anyways, you REALLY should use version 2 as of now, because as soon as i update the Windows client, i will update NCForward tweak as well and NCForward will stop sending V1 packets. So if you wrote a client, go and update it as soon as possible, or it will stop working soon (ca 2 months).
+<h5>Version 1 (deprecated)</h5>
+As promised, it is very simple to write a notification receiver for the NCForward1 protocol. The whole thing is based on the UDP/Datagram protocol which
+allows you to have connectionless communication between two devices, so communication is as easy as i could do it. The whole thing is, the iDevice sends
+a packet (message) to a computer which is in the same network and which has a client (well, the computer is the SERVER and the iDevice is the client but
+anyways :P) running which recieves the messages and displays them on the PC. No packets are sent back as confirmation, no connection is established, just
+the very basics. This also means that EVERY single computer is able to recieve your notifications as long as you set a different reciever address in your
+settings, the default is to broadcast to the whole local network on 255.255.255.255 but you can set this to any IP in your (W)LAN.<br><br>
+The packages are sent to the port 3156 on the reciever's computer and consist of 8 parts, each of them will is separated by the characters <i>%!</i>.
+This is no good practice, i know but easy to do :P.<br><br>
+The eight parts are:<br>
+<table border="1">
+<tr><td>1</td><td>NCFV1_PV1</td><td>The protocol identifier, NCF: magic, V1: version 1, _P: magic, V1: protocol version 1. You should really check these as they
+may change soon in a later revision!</td></tr>
+<tr><td>2</td><td>bulletin.sectionDisplayName</td><td>The bulletin section display name?</td></tr>
+<tr><td>3</td><td>bulletin.topic</td><td>The topic?</td></tr>
+<tr><td>4</td><td>bulletin.sectionID</td><td>The section ID?</td></tr>
+<tr><td>5</td><td>bulletin.content.title</td><td>The title of the notification you can see on your iDevice.</td></tr>
+<tr><td>6</td><td>bulletin.content.subtitle</td><td>A subtitle?</td></tr>
+<tr><td>7</td><td>bulletin.content.message</td><td>The message of the bulletin you can see on your iDevice.</td></tr>
+<tr><td>8</td><td>bulletin.date.description</td><td>Some date.</td></tr>
+</table>
+As you may recognized, only numbers 1, 5 and 7 are currently used by my Windows client, I don't really know what the others are.<br><br><br>
+
+If you came up with something awesome, tell me
+and I will (maybe) link it here!<br><br>
+This piece of software is completely open-source, look at <a href="http://github.com/h6nry/ncforward/" target="blank_">the Github repo here!</a><br><br>
+</div>
+
+<!-- include this everywhere you want the standard design template from here... -->
+<script type="text/javascript" src="template.js"></script>
+<noscript>
+As this website uses JavaScript to generate a semi-dynamically created page, you need to activate JavaScript!
+</noscript>
+<!-- ...until here! -->

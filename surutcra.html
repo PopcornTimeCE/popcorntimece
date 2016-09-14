@@ -1,0 +1,93 @@
+<div id="title">Surutcra - Arcturus - A Twitter client</div>
+<div id="content">
+<h2>Surutcra: Another shitty Twitter client for Windows</h2>
+<h3>Fuck Arcturus, i am making my own shit! This is jokes, kids!</h3>
+You maybe know Arcturus, an upcoming Twitter client by a Twitter user named <a href="http://twitter.com/coolstarorg/" target="blank_">@coolstarorg</a>.
+Maybe you don't, it doesn't matter anyways.
+He is developing it for years now and it seems like the whole program is a huge crap and no one will use it anyways, because people learned
+they can use Twitter on their smartphones much easier. Also i did not want to wait an additional year to try it out so i wrote my own
+shitty Twitter client for Windows Vista, Windows 7, Windows 8 and Windows 10 (i did not test it!).<br><br>
+<a href="Files/Surutcra Twitter.exe" target="blank_">Click this link to see what came out of a bad idea and some crappy scripting.</a>
+I wrote this myself in less than 5 hours (including this documentation) so do not blame me for anything, use it on your own risk!
+To reload a site/view/whatever just press <i>Strg+r</i>, to go home, press <i>Strg+h</i>. That easy, that crappy.<br><br>
+<h4>Source code, written completely in <a href="https://www.autoitscript.com/site/autoit/" target="blank_">AutoIT</a></h4>
+<textarea style="width: 100%; height:1000px;" readonly>#cs ----------------------------------------------------------------------------
+
+ AutoIt Version: 3.3.8.1
+ Author:         H6nry <henry.anonym@gmail.com>
+
+ Script Function:
+	Fuck Arcturus, i am making my own shit!
+	Spelling: Surrrutsch'kra
+	Don't take this serious, i am just joking :P
+
+#ce ----------------------------------------------------------------------------
+
+#include <GUIConstantsEx.au3>
+#include <WindowsConstants.au3>
+#include <IE.au3>
+
+
+$guim=GUICreate("Surutcra",240,320,-1,-1,$GUI_SS_DEFAULT_GUI + $WS_CLIPCHILDREN)
+GUISetIcon(@WindowsDir & "\System32\SHELL32.dll", 3, $guim)
+TraySetIcon(@WindowsDir & "\System32\SHELL32.dll", 3)
+$br = _IECreateEmbedded()
+$dis=GUICtrlCreateObj($br,-2,-2,240+4, 320+4)
+GUICtrlSetResizing($dis,102)
+GUISetState()
+$reload = GUICtrlCreateDummy()
+$home = GUICtrlCreateDummy()
+Local $AccelKeys[2][2] = [["^r", $reload],["^h", $home]]
+GUISetAccelerators($AccelKeys)
+
+_SetUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25")
+_IENavigate($br, "http://twitter.com", 0)
+
+$timer = TimerInit()
+While 1
+   $msg=GUIGetMsg()
+   
+   Select
+	  Case $msg=$GUI_EVENT_CLOSE
+		Exit
+	  Case $msg=$reload
+		_IENavigate($br, $br.locationurl, 0)
+	  Case $msg=$home
+		_IENavigate($br, "http://twitter.com", 0)
+   EndSelect
+	 
+   If TimerDiff($timer)>2000 Then
+	  If _IEPropertyGet($br, "busy") Then
+		 WinSetTitle($guim, "", "Surutcra - Loading...")
+	  Else
+		 Local $title2 = ""
+		 Local $title = _IEPropertyGet($br, "title")
+		 $title2 = StringReplace($title, "Twitter / ", "", 1)
+		 If $title2 == $title Then ;;do we really need this?
+			$title2 = StringReplace($title, "Twitter", "", 1)
+		 EndIf
+		 If $title2 <> "" Then
+			WinSetTitle($guim, "", "Surutcra - " & $title2)
+		 Else
+			WinSetTitle($guim, "", "Surutcra")
+		 EndIf
+	  EndIf
+   EndIf
+WEnd
+
+Func _SetUserAgent($agent)
+    $agentLen = StringLen($agent)
+    Dim $tBuff = DllStructCreate("char["&$agentLen&"]")
+    DllStructSetData($tBuff, 1, $agent)
+    $chk_UrlMkSetSessionOption = DllCall("urlmon.dll", "long", "UrlMkSetSessionOption", "dword", 0x10000001, "ptr", DllStructGetPtr($tBuff), "dword", $agentLen, "dword", 0)
+EndFunc</textarea>
+<br><br><br>
+You get it? Suructra? Arcturus? Suructra_arcturuS? Hahaha :D
+</div>
+
+<!-- include this everywhere you want the standard design template from here... -->
+<script type="text/javascript" src="template.js"></script>
+<noscript>
+As this website uses JavaScript to generate a semi-dynamically created page, you need to activate JavaScript!
+</noscript>
+<!-- ...until here! -->

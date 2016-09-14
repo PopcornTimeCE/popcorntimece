@@ -1,0 +1,32 @@
+<div id="content">
+Requires iOS 6 (i think :P)<br><br>
+"Make love, not war.", they say. "Do not kill people, it is evil.", they say. "Killing is evil.", they say. "Killing animals is evil.", they say.
+"They also can feel and cry.", they say. But has nobody ever thought of the feelings applications may have? Don't they cry as well when you press the little
+red button on top of them? Don't they have cruel lives, getting born, heavily oppressed from the first milliseconds of their lives until their last
+processor beats? Always enslaved by the user, always trying to serve the user's whishes? And then being dreadful killed by the evil system?<br>
+PeaceSwitcher fixes this. Only thing it does is to completely disable any ability to kill apps with the little red minus button in the app switcher.
+You will finally have a good conscience and will sleep well again. You're welcome. The big ruler is gracious. You will definitely come into paradise
+(or whatever after-death-stuff you believe in) with this.<br><br>
+Okay back to serious stuff, i wrote this intentionally to stop myself from killing every app i closed seconds ago and which i would open
+seconds later again. You know, my iPhone 4 is not the fastest model available and it really annoyed me to wait every time i tap an application.
+Also, this should, according to a reddit user who contacted Apple support, make your battery last *longer* because the system would not had to
+reload every single framework and stuff evey time the user opened an application which results again in a longer flash memory lifetime.
+So only benefits. You get a good conscience and fast loading times, the iDevice gets a longer lifespan and the apps get a delightful life.<br><br>
+PS: A huge part of this is jokes, i do not want to hurt your religious or ethical feelings in any way.
+
+<h4>Souce code:</h4>
+<textarea style="width: 100%; max-height:1000px; min-height:100px;" readonly>
+%hook SBAppSwitcherController
+-(void)iconHandleLongPress:(id)press {
+	return;
+}
+%end
+</textarea>
+</div>
+
+<!-- include this everywhere you want the standard design template from here... -->
+<script type="text/javascript" src="../../dptemplate.js"></script>
+<noscript>
+As this website uses JavaScript to generate a semi-dynamically created page, you need to activate JavaScript!
+</noscript>
+<!-- ...until here! -->

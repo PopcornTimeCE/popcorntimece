@@ -1,0 +1,42 @@
+<div id="title">Autoreleasing memory in pure C</div>
+<div id="content">
+<h2>An attempt to implement NSAutoreleasepool from Objective-C and Cocoa into the pure C programming language</h2>
+<h3>Never ever memory leaks again! No more free(z)ing stuff your programs! Easy to use!</h3>
+If you did not get it already, i wrote an extension (2 files) for the programming language C which tries to implement Objective-C/Apple's/Cocoa's
+NSAutoreleasePool. This is very unfinished yet and many heap-allocating functions are not implemented and "hooked" yet. But it is just a matter of minutes
+as the whole stuff around is already there :). Also (this is the more serious problem) you can only have one autoreleasepool at one time, which means you
+will have to be careful to not encapsulate them or you will get some strange behaviours (for now, everything is pushed into the first of the encapsulated pools).
+<h4>How to implement</h4>
+Implementing gc_autoreleasepools is not very hard. You either create them manually, which is NOT advised at all, or you do it the Apple-way. This is also the way i
+thought first at and the other one may not be possible to go with anymore in future versions. So to create one, just write:<br><br>
+<i>#include "C-Autoreleasepool.h"<br><br>
+...<br><br>
+gc_autoreleasepool(<br>
+&emsp;your-code-goes-here;<br>
+&emsp;and-here;<br>
+&emsp;and-here...;<br>
+)</i><br><br>
+Now every object which is being allocated on the heap by malloc,... will be freed at the end of the block at the closing bracket. To make this work, you will
+OF COURSE need to include the header file <i>C-Autoreleasepool.h</i> and compile and link against <i>C-Autoreleasepool.c</i>. If you look at the header very close
+(very, very close) you will recognize the other, manual option. I have never tested, but calling <i>gc_start_autoreleasepool()</i> at the start and
+<i>gc_end_autoreleasepool()</i> at the end of your heap-allocating block should do exactly the same as of Version 0.10.
+As said, this is unadvised and may change soon.<br><br>
+To download the two framework files and some testing-and demo files, head over to my Github or just click here for the
+<b><a href="https://github.com/H6nry/c-autoreleasepool/" target="_blank">C-Autoreleasepool framework on Github by H6nry</a></b>.
+<h4>Technical details</h4>
+The code just "hooks" malloc,free,... with its own versions of them which just add some reference counting stuff and call the original functions again. To make using
+of this as easy as possible, i also wrote a macro so that you can have a "real" code-block instead of having to call single functions. Also the gc_autoreleasepool
+avoids confusion with calls of the underlying functions so your code is as bug-free as i can make it for you.
+<h4>Something to tell me?</h4>
+If you have any questions left or want to contribute to C-Autoreleasepool development, just write an email to me
+<a href="mailto:henry.anonym@gmail.com?subject=H6nrys website - C-Autoreleasepool">henry.anonym@gmail.com</a>.
+Also if i helped you or you like my work, just say thanks to me so i know i could do something useful :).
+Okay, so now, have fun with C-Autoreleasepool, go and create something awesome!
+</div>
+
+<!-- include this everywhere you want the standard design template from here... -->
+<script type="text/javascript" src="template.js"></script>
+<noscript>
+As this website uses JavaScript to generate a semi-dynamically created page, you need to activate JavaScript!
+</noscript>
+<!-- ...until here! -->

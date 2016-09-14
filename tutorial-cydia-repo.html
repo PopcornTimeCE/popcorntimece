@@ -1,0 +1,88 @@
+<div id="title">How to host your own Cydia repo with Github</div>
+<div id="content">
+<h2>How to host your own Cydia repo with Github</h2>
+<h3>Notice: There are many other ways to reach this, this is just my personal way.</h3><br>
+I use:	- An old Windows 7 PC<br>
+		- An ancient iPhone 4<br>
+		- iOS 6.1.3 and 7.1.2<br>
+If you have a different setup, this tutorial should also work. You will not need to have Windows installed or set up a huge environment, you don't even need your PC for anything, everything is also possible to do on your iPhone as well!<br>
+<h4>The overall principle</h4>
+1) Create a Github account and set up a repository for your website.<br>
+2) Set up a Cydia depiction website for your repo.<br>
+3) Collect all the configuraion files ("DEBIAN/control") from your packages and put them together in a big Packages file.<br>
+4) Gzip and Bzip2 this Package file.<br>
+5) Craft a Release file.<br>
+6) Upload your mad stuff to your .github.io website.<br>
+7) Test everything for at least 3 days. No bugs? Finished, congratulations :)<br>
+<h4>1: Create a Github website</h4>
+First, you will need a Github account. No one yet? Go, create one at <a href="https://github.com/" target="_blank">https://github.com/</a>.
+Log into your account now and create a new repository and name it "[your userame here].github.io". If you do not so, your github website will not work!
+When i did this process, i was guided very good through the process of creating so you should be able to manage this easily.
+<h4>2: Set up Cydia depiction sites</h4>
+Well, now it is getting complicated :D<br><br>
+This is a very important step because the depiction sites are mostly the only thing a user sees from your whole work. Also it is important that your backend is stable and easy to modify, mostly the design template.
+Imagine you have 1000 different Packages in your repo and if you want to make one change in your design, you had to edit a thousand files!
+Unfortunately, github pages is no full-fledged website server system, so if you thought (just like me) of PHP, i have to destroy your dreams now. Github pages is 100% static.
+Or is it? Are we doomed now? No we are not, because of our savior JavaScript! Yes, it is possible to write semi-dynamic websites with javascript and it is quite trivial, though!<br><br>
+Just look at the source code of this website, it is just an empty page if you delete the JavaScript block on the bottom, all design stuff is done within a file called template.js.
+For my Cydia repo depictions i used a different template which you can find here: <a href="https://github.com/H6nry/h6nry.github.io/blob/master/repo/dptemplate.js" target="_blank">https://github.com/H6nry/h6nry.github.io/blob/master/repo/dptemplate.js</a>
+Feel free to use it as well, just send me an e-mail and say "Thank you" if you like it.<br><br>
+So we have a cool design template now and we can finally set up a folder structure. I used a very simple one, just look around here: <a href="https://github.com/H6nry/h6nry.github.io/blob/master/repo/" target="_blank">https://github.com/H6nry/h6nry.github.io/blob/master/repo/</a>
+<h4>3: Set up the Packages file</h4>
+As you may have noticed, there is a Packages file in the directory from the link above. Creating this can be a pain if you do it all by hand, so some smart devs (including Saurik) made a smart packaging shell-script named dpkg-scanpackages.<br><br>
+You can find it here:  <a href="http://test.saurik.com/macciti/dpkg-scanpackages" target="_blank">http://test.saurik.com/macciti/dpkg-scanpackages</a>. You will also need a file called dpkg-gettext.pl which you can find by searching around the internet a bit (<a href="http://lmgtfy.com/?q=dpkg-gettext.pl" target="_blank">or just click this link :P)</a>.
+Next, to avoid any problems, you have to edit these files and remove all the Windows CRLF return characters at the end of the lines. If you have notepad++ installed go to Edit>Linefeed format>Convert to Unix. If you are doing this on a Linux environemt or directly on your iPhone, just skip, everything should be alright.<br><br>
+This script is written in Perl, which means you will need to install Perl before you can do anything. You will also need to have dpkg installed. The only device i have at the moment, which has dpkg AND Perl installed, is my iPhone.
+So go, find a Cydia repo from where you can install Perl (i am using http://coolstar.org/publicrepo/) and install. The other package, dpkg should already be installed because of Cydia. Now copy over your folder with the .deb packages and run dpkg-scanpackages over it. If your package folder is "Files" for example, write:<br><br>
+<i>./dpkg-scanpackages Files /dev/null > Packages</i><br><br>
+You will also have to make sure that everything has the right permissions, otherwise you will get a "permission" error. If you get a "bad interpreter" error, you did not convert the CRLF-linefeed-characters properly! Go and redo this! If you got a "some files [blabla] were not added [blabla]" error, everything went fine :D<br><br>
+If you finally have a got a filled package file, you will need to edit it manually to fit it to your needs. For example if you have a beta package in your repo but you have a stable version in one of the standard repos, you maybe need to change the package identifier.
+Also you will need to add a "Depiction:" entry to all of your packages so the user sees your stylish website from step two. I even had to edit the "Author:" and "Maintainer:" entries to fit my contact information. It is best to read through the whole file once or twice to make sure you did not forget anything ;).
+<h4>4: Gzip and Bzip2 your Packages file</h4>
+For some reason (which i can not understand) Cydia wants the Package file in three different ways: One clear, one gzipped and one bzipped, so you will have to generate a "Packages", a "Packages.gz" and a "Packages.bz2".<br><br>
+This is a quite trivial step but i am doing it via the command line on a tool suite named "Cygwin" because it is very fast to copy some commands and you can unite and automate the process of packaging and uploading easily on the command line (also because i am a Windows-er :P). So the commands you will need to execute are:<br><br>
+<i>rm Packages.gz<br>
+rm Packages.bz2<br>
+gzip -c9 Packages > Packages.gz<br>
+bzip2 -c9 Packages > Packages.bz2</i><br><br>
+What happens here: Remove any previous Packages.[bla] files, gzip/bzip2 the new one, and write them to a new file.<br><br>
+You will need to copy these to your root repo directory alongside with an (optional) index.html and the Release file which we will craft in a moment.
+<h4>5: Craft a Release file</h4>
+Cydia will look for this Release file at first to make sure it was given the right URL and the repo the user wants to add is okay to add. A Release file looks like the following:<br><br>
+<i>Origin: H6nry<br>
+Label: H6nry's repo<br>
+Suite: stable<br>
+Version: 1.0<br>
+Codename: h6nryrepo<br>
+Architectures: iphoneos-arm<br>
+Components: main<br>
+Description: H6nry's Cydia Repository</i><br><br>
+Feel free to play around with these values and look what effect they have, you might find some interesting features! (I left out this step completely, email me if you found out some cool thing!). If you are done, copy this into your repo's root directory (if not done already).<br><br>
+Optionally, you can also add an icon named "CydiaIcon.png" in your root dir so the user finds your repo at a glance.
+<h4>6: Upload your mad stuff</h4>
+To upload your stuff, you have several possibilities but i am choosing (as always) the command line. You will need to install a program named git because this is the only and most popular way to upload anything to your repo.<br><br>
+When you installed git, execute the following:<br><br>
+<i>git clone https://github.com/[your username here]/[your username here].github.io.git<br>
+cd [your username here].github.io</i><br><br>
+What happens here: clone your github repo to your local directory so you can edit it to upload it again. Then, for convenience, change directory to your newly created repo dir.<br><br>
+You will need to clone your github repo only once as long as you do not change anything from another computer (or user or directory) than the one you have just created.<br><br>
+Next step is to copy/move your whole new website to this folder and prepare it for uploading (remove strange comments<!--something like this, for example :P BTW: I am very sorry for the code which is following or which you just read through :| --> , debug stuff...). Upload your website with the following:<br><br>
+<i>git add -A<br>
+git commit -m "Repo stuff"<br>
+git push -u origin master</i><br><br>
+What happens here: Add all files and dirs and files in dirs to the "upload list", prepare for uploading, upload everything.<br><br>
+You will be asked for your username and password during the process, these are the same ones like you would log in regularily to github.com in a browser. You may see quite a lot of information of what is being uploaded and committed... you can ignore most of this ;).
+<h4>7: Test everything!</h4>
+The most important thing is that you test everything properly to make sure the user will get a uniquely good experience and he will keep your repo in his Cydia repo list.<br><br>
+For testing your repo website properly, i recommend strongly that you install iCleaner by Exile90 (i always use the pro version from his private repo because i know what i am doing ;P).
+The "problem" with Cydia is, because it wants to give the user fast loading times, it caches every depiction page. If you change now anything, you maybe will not see anything from your changes because of this. "iCleaner" fixes this by clearing Cydia caches. Just tap "Cydia" in the middle-tab and then "Clean" in the appearing menu.<br><br>
+Okay, now TEST EVERYTHING, really every little thing, search for every possibility to make your stuff misbehave and fix it! No matter how little your bug is: The user will find it and will be frustrated about it! So test, test, test!<br><br>
+Done with testing? Congratulations, you just managed to set up your own Cydia repository from scratch! If you like this tutorial, spread the word and say thanks to me (or if you want to tell me anything or have any questions left).<br><br><br><br>
+</div>
+
+<!-- include this everywhere you want the standard design template from here... -->
+<script type="text/javascript" src="template.js"></script>
+<noscript>
+As this website uses JavaScript to generate a semi-dynamically created page, you need to activate JavaScript!
+</noscript>
+<!-- ...until here! -->

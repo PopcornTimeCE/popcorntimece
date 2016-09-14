@@ -1,0 +1,8 @@
+Origin: H6nry's repo
+Label: H6nry's repo
+Suite: stable
+Version: 1.0
+Codename: h6nryrepo
+Architectures: iphoneos-arm
+Components: main
+Description: H6nry's Cydia Repository

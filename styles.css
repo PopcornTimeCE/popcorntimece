@@ -1,0 +1,43 @@
+
+body {
+	color: #000000;
+	background-color: #FFFFFF;
+	font-family: sans-serif;
+}
+
+a:link {
+	color: #404040;
+}
+a:visited {
+	color:#202020;
+}
+
+header {
+  background-color: #77FFFF;
+  font-family:  serif;
+  text-align: center;
+}
+
+nav {
+  background-color: #77FFFF;
+  float: left;
+  max-width: 300px;
+  padding: 5px;
+}
+
+section {
+  text-align: justify;
+  background-color: #FFFFFF;
+  font-size: 110%;
+  float: right top;
+  max-width: 750px;
+  display: table-cell;
+  padding: 5px;
+}
+
+aside {
+  background-color: #77FFFF;
+  float: right;
+  max-width: 300px;
+  padding: 5px;
+}

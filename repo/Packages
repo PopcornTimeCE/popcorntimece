@@ -1,0 +1,339 @@
+Package: org.h6nry.bytafontlegacytm
+Version: 0.0.1-127
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate, preferenceloader
+Provides: com.bytafont.bytafonttm
+Architecture: iphoneos-arm
+Filename: Files/bytafontlegacytm/org.h6nry.bytafontlegacytm_0.0.1-127_iphoneos-arm.deb
+Size: 6040
+Installed-Size: 40
+MD5sum: ced0d3a70d452b19db8d6860b14ddf39
+Description: BytaFont Tweak Mode for old iOS versions
+Name: BytaFontLegacyTM
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/bytafontlegacytm/index.html
+
+Package: org.h6nry.classiclockcydget
+Version: 4.0
+Priority: optional
+Section: Addons (Cydget)
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: cydget, firmware (>= 7.0), curl
+Architecture: iphoneos-arm
+Filename: Files/classiclockcydget/CLC_4_final.deb
+Size: 13382
+MD5sum: 70042021b08e2d5753ded6726c8c7323
+Description: iOS 6 style lockscreen on iOS 7 and 8
+Name: Classic Lock Cydget
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/classiclockcydget/index.html
+
+Package: org.h6nry.classiclockextension
+Version: 2.4
+Depends: firmware (>= 7.0), org.h6nry.classiclockcydget
+Architecture: iphoneos-arm
+Section: Addons (Cydget)
+Filename: Files/classiclockextension/CLE_2-4_final.deb
+Size: 5020
+MD5sum: fc58e94083584c74fa61e5d285e69e11
+Description: Extensions for ClassicLock Cydget
+Name: ClassicLock Extension
+Author: H6nry <henry.anonym@gmail.com>
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/classiclockextension/index.html
+
+Package: org.h6nry.quickact
+Version: 0.0.1-1
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Filename: Files/quickact/org.h6nry.quickact_0.0.1-1_iphoneos-arm.deb
+Size: 2868
+Installed-Size: 16
+MD5sum: 7ff0cb6c03f6aec3f1c28546cac3d7e5
+Description: Quickly toggle WiFi on iOS 6!
+Name: QuickAct
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/quickact/index.html
+
+Package: org.h6nry.swipeswitcher6
+Version: 0.0.1-87
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Filename: Files/swipeswitcher6/org.h6nry.swipeswitcher6_0.0.1-87_iphoneos-arm.deb
+Size: 3088
+Installed-Size: 16
+MD5sum: 694352902cc4665ced2326e3afbc008d
+Description: Swipe to switcher! (on iOS 6)
+Name: SwipeSwitcher6
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/swipeswitcher6/index.html
+
+Package: org.h6nry.ncforward
+Version: 1.0-3
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: firmware (>= 5.0), mobilesubstrate, preferenceloader
+Architecture: iphoneos-arm
+Filename: Files/ncforward/org.h6nry.ncforward_1.0-3_iphoneos-arm-armv7-arm64-sdk7.1.deb
+Size: 909172
+Installed-Size: 1028
+MD5sum: 490f67e4ab92758fac2ba999a6e02139
+Description: Forward iOS notfications to any other device. Or: Continuity feature for everyone!
+Name: NCForward
+Author: H6nry <henry.anonym@gmail.com>
+
+Package: org.h6nry.ncforward
+Version: 1.1-1
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: firmware (>= 5.0), mobilesubstrate, preferenceloader
+Architecture: iphoneos-arm
+Filename: Files/ncforward/org.h6nry.ncforward_1.1-1_iphoneos-arm-armv7-arm64-sdk8.4.deb
+Size: 912086
+Installed-Size: 1028
+MD5sum: 75e18b9e7844a4997283cbb867f88fba
+Description: Forward iOS notfications to any other device. Or: Continuity feature for everyone!
+Name: NCForward
+Author: H6nry <henry.anonym@gmail.com>
+
+Package: org.h6nry.ncforward
+Version: 2.0-16
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: firmware (>= 5.0), mobilesubstrate, preferenceloader
+Architecture: iphoneos-arm
+Filename: Files/ncforward/org.h6nry.ncforward_2.0-16_iphoneos-arm-armv7-armv7s-arm64-sdk8.4.deb
+Size: 943788
+Installed-Size: 1128
+MD5sum: 8eec2d61075baf89c5702f2c6adf7f80
+Description: Forward iOS notfications to any other device. Or: Continuity feature for everyone!
+Name: NCForward
+Author: H6nry <henry.anonym@gmail.com>
+
+Package: org.h6nry.ncforward
+Version: 2.1-1
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: firmware (>= 5.0), mobilesubstrate, preferenceloader
+Architecture: iphoneos-arm
+Filename: Files/ncforward/org.h6nry.ncforward_2.1-1_iphoneos-arm-armv7-armv7s-arm64-sdk8.4.deb
+Size: 943012
+Installed-Size: 1124
+MD5sum: f27fc31ac3ea939cb69379f3eedf5956
+Description: Forward iOS notfications to any other device. Or: Continuity feature for everyone!
+Name: NCForward
+Author: H6nry <henry.anonym@gmail.com>
+
+Package: org.h6nry.ncforward
+Version: 2.2-1
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: firmware (>= 5.0), mobilesubstrate, preferenceloader
+Architecture: iphoneos-arm
+Filename: Files/ncforward/org.h6nry.ncforward_2.2-1_iphoneos-arm-armv7-armv7s-arm64-sdk8.4.deb
+Size: 50840
+Installed-Size: 336
+MD5sum: 9840ccb69adb994ea7c67ce670f6016d
+Description: Forward iOS notfications to any other device.
+Name: NCForward
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/ncforward/index.html
+
+Package: org.h6nry.ncforward
+Version: 2.2-4
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: firmware (>= 5.0), mobilesubstrate, preferenceloader
+Architecture: iphoneos-arm
+Filename: Files/ncforward/org.h6nry.ncforward_2.2-4_iphoneos-arm-armv7-armv7s-arm64-sdk9.0.deb
+Size: 50812
+Installed-Size: 336
+MD5sum: 929e54fac46420d0a4f36f39440765c8
+Description: Forward iOS notfications to any other device.
+Name: NCForward
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/ncforward/index.html
+
+Package: org.h6nry.ncforward
+Version: 2.2-19
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: firmware (>= 5.0), mobilesubstrate, preferenceloader
+Architecture: iphoneos-arm
+Filename: Files//ncforward/org.h6nry.ncforward_2.2-19_iphoneos-arm-armv7-armv7s-arm64-sdk9.0.deb
+Size: 51290
+Installed-Size: 368
+MD5sum: 8b1fccae4a5157692a91c8e10ff8403f
+Description: Forward iOS notfications to any other device.
+Name: NCForward
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/ncforward/index.html
+
+Package: org.h6nry.peaceswitcher
+Version: 0.0.1-12
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Filename: Files/peaceswitcher/org.h6nry.peaceswitcher_0.0.1-12_iphoneos-arm.deb
+Size: 1840
+Installed-Size: 16
+MD5sum: 6957468fae12707d6e1c7681aa947f21
+Description: Bring peace to your switcher (and to the world as well)
+Name: PeaceSwitcher
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/peaceswitcher/index.html
+
+Package: org.h6nry.legacyvibes
+Version: 0.0.1-55
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Filename: Files/legacyvibes/org.h6nry.legacyvibes_0.0.1-55_iphoneos-arm.deb
+Size: 4708
+Installed-Size: 168
+MD5sum: 71dd3a5b0f53b38bd169c22705b6c2f3
+Description: An awesome MobileSubstrate tweak!
+Name: LegacyVibes
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/legacyvibes/index.html
+
+Package: org.h6nry.statusbarlockicon
+Version: 0.0.1-94
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Filename: Files//statusbarlockicon/org.h6nry.statusbarlockicon_0.0.1-94_iphoneos-arm.deb
+Size: 6896
+Installed-Size: 168
+MD5sum: aefe3bdbea37d5012579d7dbfde6afa1
+Description: Get back the lock on lockscreen!
+Name: StatusBarLockIcon
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/statusbarlockicon/index.html
+
+Package: org.h6nry.adowngrader
+Version: 0.0.1-21
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate, preferenceloader
+Architecture: iphoneos-arm
+Filename: Files//adowngrader/org.h6nry.adowngrader_0.0.1-21_iphoneos-arm.deb
+Size: 6704
+Installed-Size: 216
+MD5sum: 36e394d04007ccc87b7e9f54c6c38015
+Description: Downgrade your apps, well, at least try it.
+Name: Adowngrader
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/adowngrader/index.html
+
+Package: org.h6nry.tapcounter
+Version: 0.0.1-15
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Filename: Files//tapcounter/org.h6nry.tapcounter_0.0.1-15_iphoneos-arm.deb
+Size: 8486
+Installed-Size: 544
+MD5sum: b6a08c149b213a4d25ea0155c53cbf6d
+Description: An awesome MobileSubstrate tweak!
+Name: Tapcounter
+Author: H6nry <henry.anonym@gmail.com>
+
+Package: org.h6nry.tapcounter
+Version: 0.1-1
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate, preferenceloader
+Architecture: iphoneos-arm
+Filename: Files//tapcounter/org.h6nry.tapcounter_0.1-1_iphoneos-arm.deb
+Size: 8306
+Installed-Size: 544
+MD5sum: 3173586e3d91b5d91d14eab78c71af54
+Description: Count your taps!
+Name: Tapcounter
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/tapcounter/index.html
+
+Package: org.h6nry.adowngrader
+Version: 0.0.2-1
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Filename: Files//adowngrader/org.h6nry.adowngrader_0.0.2-1_iphoneos-arm.deb
+Size: 5930
+Installed-Size: 104
+MD5sum: 01f815df6875c42e866567d7dafed9c9
+Description: Downgrade your apps. Well, at least try it.
+Name: Adowngrader
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/adowngrader/index.html
+
+Package: org.h6nry.tapcounter
+Version: 0.1-24
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate, preferenceloader
+Architecture: iphoneos-arm
+Filename: Files//tapcounter/org.h6nry.tapcounter_0.1-24_iphoneos-arm.deb
+Size: 8950
+Installed-Size: 544
+MD5sum: 678cdaf1c58c7b101537230f090e4e75
+Description: Count your taps!
+Name: Tapcounter
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/tapcounter/index.html
+
+Package: org.h6nry.adowngrader
+Version: 0.0.2-7
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Filename: Files//adowngrader/org.h6nry.adowngrader_0.0.2-7_iphoneos-arm.deb
+Size: 53280
+Installed-Size: 304
+MD5sum: 814bfbfb309e70b575af5afe9e897e5d
+Description: Downgrade your apps. Well, at least try it.
+Name: Adowngrader
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/adowngrader/index.html
+
+Package: org.h6nry.rsspeek
+Version: 1.0-rc1-1
+Section: Addons (NotificationCenter)
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: firmware (>= 5.0), com.saurik.substrate.safemode, com.chpwn.weeloader
+Architecture: iphoneos-arm
+Filename: Files//rsspeek/org.h6nry.rsspeek_1.0-rc1-1_iphoneos-arm.deb
+Size: 73754
+Installed-Size: 576
+MD5sum: 2a58962bb1b92b700406072020cdfa14
+Description: An RSS client in your notification center that does not suck.
+Name: RSSPeek
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/rsspeek/index.html
+
+Package: org.h6nry.dockplay
+Version: 1.0-23
+Section: Tweaks
+Maintainer: H6nry <henry.anonym@gmail.com>
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Filename: Files//dockplay/org.h6nry.dockplay_1.0-23_iphoneos-arm.deb
+Size: 8970
+Installed-Size: 168
+MD5sum: 195f2f96d39597d99e3a6ef760c1afcd
+Description: Swipe gestures on lockscreen's now playing album art.
+Name: Dockplay
+Author: H6nry <henry.anonym@gmail.com>
+Depiction: http://h6nry.github.io/repo/Files/dockplay/index.html
